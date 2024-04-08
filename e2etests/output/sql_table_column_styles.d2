@@ -1,0 +1,45 @@
+Humor in the Court: {
+  shape: sql_table
+	Could you see him from where you were standing?: "I could see his head."
+	And where was his head?: Just above his shoulders.
+  style.fill: red
+  style.stroke: lightgray
+  style.font-color: orange
+  style.font-size: 20
+}
+
+Humor in the Court2: {
+  shape: sql_table
+	Could you see him from where you were standing?: "I could see his head."
+	And where was his head?: Just above his shoulders.
+  style.fill: red
+  style.stroke: lightgray
+  style.font-color: orange
+  style.font-size: 30
+}
+
+manager: BatchManager {
+  shape: class
+	style.font-size: 20
+
+  -num: int
+  -timeout: int
+  -pid
+
+  +getStatus(): Enum
+  +getJobs(): "Job[]"
+  +setTimeout(seconds int)
+}
+
+manager2: BatchManager {
+  shape: class
+	style.font-size: 30
+
+  -num: int
+  -timeout: int
+  -pid
+
+  +getStatus(): Enum
+  +getJobs(): "Job[]"
+  +setTimeout(seconds int)
+}

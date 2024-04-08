@@ -1,0 +1,23 @@
+
+direction: left
+
+x: {
+  shape: sql_table
+	y { constraint: primary_key }
+	tooltip: I like turtles
+}
+
+a: {
+  shape: sql_table
+	b { constraint: foreign_key }
+}
+
+a.b <-> x.y: {
+  style.animated: true
+    source-arrowhead: {
+      shape: cf-many
+    }
+  target-arrowhead: {
+      shape: cf-one
+  }
+}

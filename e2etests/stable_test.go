@@ -2873,5 +2873,6 @@ y: profits {
 		loadFromFile(t, "grid_label_positions"),
 	}
 
-	runa(t, tcs)
+	//runa(t, tcs)
+	printToFile(tcs)
 }

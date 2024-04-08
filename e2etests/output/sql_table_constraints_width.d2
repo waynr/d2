@@ -1,0 +1,30 @@
+
+a: {
+	shape: sql_table
+	x: INT {constraint: unique}
+}
+
+b: {
+	shape: sql_table
+	x: INT {constraint: [primary_key; foreign_key]}
+}
+
+c: {
+	shape: sql_table
+	x: INT {constraint: [foreign_key; unique]}
+}
+
+d: {
+	shape: sql_table
+	x: INT {constraint: [primary_key; foreign_key; unique]}
+}
+e: {
+	shape: sql_table
+	x: INT {constraint: [no_abbrev; foreign_key; hello]}
+	y: string
+	z: STRING {constraint: yo}
+}
+f: {
+	shape: sql_table
+	x: INT
+}

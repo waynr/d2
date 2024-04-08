@@ -1,0 +1,38 @@
+
+
+class2 -> users -> code -> package -> no width
+
+class2: "" {
+	shape: class
+	-num: int
+	-timeout: int
+	-pid
+
+	+getStatus(): Enum
+	+getJobs(): "Job[]"
+	+setTimeout(seconds int)
+}
+
+users: "" {
+	shape: sql_table
+	id: int
+	name: string
+	email: string
+	password: string
+	last_login: datetime
+}
+
+code: |go
+    a := 5
+    b := a + 7
+    fmt.Printf("%d", b)
+|
+
+package: "" { shape: package }
+no width: ""
+
+
+class2.width: 512
+users.width: 512
+code.width: 512
+package.width: 512

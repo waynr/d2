@@ -1,0 +1,51 @@
+
+aa.shape: step
+bb.shape: step
+cc.shape: step
+aa -- bb -- cc
+
+aa -> dd.ee: 1
+bb -> ff.gg: 2
+cc -> dd.hh: 3
+
+dd.ee.shape: diamond
+dd.ee -> ii
+
+ii -- jj -> kk
+
+ll.mm.shape: circle
+ff.mm.shape: circle
+kk -> ff.mm: 4
+ff.mm -> ll.mm: 5
+ll.mm -> nn.oo: 6
+
+ff.gg.shape: diamond
+ff.gg -> ff.pp -> ll.qq -> ll.rr
+
+dd.hh.shape: diamond
+dd.hh -> ss.tt -> uu.vv
+
+kk -> ww
+uu.vv -> ww
+ww -> rm
+
+ww: {
+	shape: queue
+	icon: https://icons.terrastruct.com/essentials/time.svg
+}
+
+rm -> nn.xx
+ll.rr -> yy.zz
+
+rm -> yy.zz
+yy.zz.shape: queue
+yy.zz.icon: https://icons.terrastruct.com/essentials/time.svg
+
+yy.zz -> yy.ab -> nn.ac -> ad
+
+ad.style.fill: red
+ad.shape: parallelogram
+
+nn.shape: cylinder
+
+ww -> ff.gg

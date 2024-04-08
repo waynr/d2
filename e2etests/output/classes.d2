@@ -1,0 +1,19 @@
+classes: {
+  dragon_ball: {
+    label: ""
+    shape: circle
+    style.fill: orange
+		style.stroke-width: 0
+		width: 50
+  }
+  path: {
+    label: "then"
+    style.stroke-width: 4
+  }
+}
+nostar: { class: dragon_ball }
+1star: { label: "*"; class: dragon_ball }
+2star: { label: "**"; class: dragon_ball }
+
+nostar -> 1star: { class: path }
+1star -> 2star: { class: path }

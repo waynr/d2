@@ -1,0 +1,36 @@
+shape: sequence_diagram
+alice: "Alice\nline\nbreaker" {
+    shape: person
+    style.stroke: red
+}
+bob: "Bob" {
+    shape: person
+    style.stroke-width: 5
+}
+db: {
+    shape: cylinder
+}
+queue: {
+    shape: queue
+}
+service: "an\nodd\nservice\nwith\na\nname\nin\nmultiple lines"
+
+alice -> bob: "Authentication Request"
+bob -> service: "make request for something that is quite far away and requires a really long label to take all the space between the objects"
+service -> db: "validate credentials"
+db -> service: {
+    style.stroke-dash: 4
+}
+service -> bob: {
+    style.stroke-dash: 4
+}
+bob -> alice: "Authentication Response"
+alice -> bob: "Another authentication Request"
+bob -> queue: "do it later"
+queue -> bob: "stored" {
+    style.stroke-dash: 3
+    style.stroke-width: 5
+    style.stroke: green
+}
+
+bob -> alice: "Another authentication Response"

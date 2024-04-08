@@ -1,0 +1,83 @@
+a_shape.shape: circle
+a_sequence: {
+    shape: sequence_diagram
+
+    scorer.t -> itemResponse.t: getItem()
+    scorer.t <- itemResponse.t: item
+
+    scorer.t -> item.t1: getRubric()
+    scorer.t <- item.t1: rubric
+
+    scorer.t -> essayRubric.t: applyTo(essayResp)
+    itemResponse -> essayRubric.t.c
+    essayRubric.t.c -> concept.t: match(essayResponse)
+    scorer <- essayRubric.t: score
+
+    scorer.t <-> itemOutcome.t1: new
+    scorer.t <-> item.t2: getNormalMinimum()
+    scorer.t -> item.t3: getNormalMaximum()
+
+    scorer.t -- itemOutcome.t2: setScore(score)
+    scorer.t -- itemOutcome.t3: setFeedback(missingConcepts)
+}
+
+another: {
+    sequence: {
+        shape: sequence_diagram
+
+		# scoped edges
+        scorer.t -> itemResponse.t: getItem()
+        scorer.t <- itemResponse.t: item
+
+        scorer.t -> item.t1: getRubric()
+        scorer.t <- item.t1: rubric
+
+        scorer.t -> essayRubric.t: applyTo(essayResp)
+        itemResponse -> essayRubric.t.c
+        essayRubric.t.c -> concept.t: match(essayResponse)
+        scorer <- essayRubric.t: score
+
+        scorer.t -> itemOutcome.t1: new
+        scorer.t <-> item.t2: getNormalMinimum()
+        scorer.t -> item.t3: getNormalMaximum()
+
+        scorer.t -> itemOutcome.t2: setScore(score)
+        scorer.t -> itemOutcome.t3: setFeedback(missingConcepts)
+    }
+}
+
+a_shape -> a_sequence
+a_shape -> another.sequence
+a_sequence -> sequence
+another.sequence <-> finally.sequence
+a_shape -- finally
+
+
+finally: {
+    shape: queue
+    sequence: {
+        shape: sequence_diagram
+		# items appear in this order
+        scorer {
+					style.stroke: red
+					style.stroke-dash: 2
+				}
+        concept {
+					style.stroke-width: 6
+				}
+        essayRubric
+        item
+        itemOutcome
+        itemResponse
+    }
+}
+
+# full path edges
+finally.sequence.itemResponse.a -> finally.sequence.item.a.b
+finally.sequence.item.a.b -> finally.sequence.essayRubric.a.b.c
+finally.sequence.essayRubric.a.b.c -> finally.sequence.concept.a.b.c.d
+finally.sequence.item.a -> finally.sequence.essayRubric.a.b
+finally.sequence.concept.a.b.c.d -> finally.sequence.itemOutcome.a.b.c.d.e
+finally.sequence.scorer.abc -> finally.sequence.item.a
+finally.sequence.itemOutcome.a.b.c.d.e -> finally.sequence.scorer
+finally.sequence.scorer -> finally.sequence.itemResponse.c

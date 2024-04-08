@@ -1,0 +1,68 @@
+
+root: {
+	shape: image
+	icon: https://icons.terrastruct.com/essentials/004-picture.svg
+}
+
+root -> container.root
+
+container: {
+	root: {
+		shape: image
+		icon: https://icons.terrastruct.com/essentials/004-picture.svg
+	}
+
+	left2: {
+		root: {
+			shape: image
+			icon: https://icons.terrastruct.com/essentials/004-picture.svg
+		}
+		inner: {
+			left2: {
+				shape: image
+				icon: https://icons.terrastruct.com/essentials/004-picture.svg
+			}
+			right: {
+				shape: image
+				icon: https://icons.terrastruct.com/essentials/004-picture.svg
+			}
+		}
+		root -> inner.left2: {
+			label: to inner left2
+		}
+		root -> inner.right: {
+			label: to inner right
+		}
+	}
+
+	right: {
+		root: {
+			shape: image
+			icon: https://icons.terrastruct.com/essentials/004-picture.svg
+		}
+		inner: {
+			left2: {
+				shape: image
+				icon: https://icons.terrastruct.com/essentials/004-picture.svg
+			}
+			right: {
+				shape: image
+				icon: https://icons.terrastruct.com/essentials/004-picture.svg
+			}
+		}
+		root -> inner.left2: {
+			label: to inner left2
+		}
+		root -> inner.right: {
+			label: to inner right
+		}
+	}
+
+	root -> left2.root: {
+		label: to left2 container root
+	}
+
+	root -> right.root: {
+		label: to right container root
+	}
+}

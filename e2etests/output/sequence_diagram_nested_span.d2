@@ -1,0 +1,25 @@
+shape: sequence_diagram
+
+scorer: {
+    style.stroke: red
+    style.stroke-width: 5
+}
+
+scorer.abc: {
+    style.fill: yellow
+    style.stroke-width: 7
+}
+
+scorer -> itemResponse.a: {
+    style.stroke-width: 10
+}
+itemResponse.a -> item.a.b
+item.a.b -> essayRubric.a.b.c
+essayRubric.a.b.c -> concept.a.b.c.d
+item.a -> essayRubric.a.b
+concept.a.b.c.d -> itemOutcome.a.b.c.d.e
+
+scorer.abc -> item.a
+
+itemOutcome.a.b.c.d.e -> scorer
+scorer -> itemResponse.c

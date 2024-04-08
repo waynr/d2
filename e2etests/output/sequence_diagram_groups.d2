@@ -1,0 +1,24 @@
+shape: sequence_diagram
+a;b;c;d
+a -> b
+ggg: {
+	a -> b: lala
+}
+group 1: {
+  b -> c
+	c -> b: ey
+  nested guy: {
+    c -> b: okay
+  }
+  b.t1 -> c.t1
+  b.t1.t2 -> c.t1
+  c.t1 -> b.t1
+}
+group b: {
+  b -> c
+	c."what would arnold say"
+  c -> b: okay
+}
+choo: {
+  d."this note"
+}

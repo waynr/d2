@@ -1,0 +1,35 @@
+
+aa: {
+	bb: {
+		cc:  {
+			dd: {
+				shape: rectangle
+				ee: {shape: text}
+				ff
+			}
+			gg: {shape: text}
+			hh
+			dd.ee -- gg: '11'
+			gg -- hh: '22'
+		}
+		ii: {
+			shape: package
+			jj: {shape: diamond}
+		}
+		ii -> cc.dd
+		kk: {shape: circle}
+	}
+	ll
+	mm: {shape: cylinder}
+	ll <-> bb: '33'
+	mm -> bb.cc: '44'
+	mm->ll
+	mm <-> bb: '55'
+	ll <-> bb.cc.gg
+	mm <- bb.ii: '66'
+	bb.cc <- ll: '77'
+	nn: {shape: text}
+	oo
+	bb.ii <-> ll: '88'
+}
+			

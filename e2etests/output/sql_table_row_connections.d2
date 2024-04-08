@@ -1,0 +1,17 @@
+
+direction: left
+
+a: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+}
+
+b: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+	a_1: int { constraint: foreign_key }
+	a_2: int { constraint: foreign_key }
+}
+
+b.a_1 -> a.id
+b.a_2 -> a.id

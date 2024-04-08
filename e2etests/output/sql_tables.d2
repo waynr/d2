@@ -1,0 +1,38 @@
+
+direction: left
+
+users: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+	name: string
+	email: string
+	password: string
+	last_login: datetime
+}
+
+products: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+	price: decimal
+	sku: string
+	name: string
+}
+
+orders: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+	user_id: int { constraint: foreign_key }
+	product_id: int { constraint: foreign_key }
+}
+
+shipments: {
+	shape: sql_table
+	id: int { constraint: primary_key }
+	order_id: int { constraint: foreign_key }
+	tracking_number: string
+	status: string
+}
+
+orders.user_id -> users.id
+orders.product_id -> products.id
+shipments.order_id -> orders.id
